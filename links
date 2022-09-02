@@ -1,0 +1,30 @@
+All News Category
+url: https://openapi.programming-hero.com/api/news/categories
+
+All news in a Category
+URL Format: https://openapi.programming-hero.com/api/news/category/{category_id}
+
+Example: https://openapi.programming-hero.com/api/news/category/01
+
+News detail url:
+URL Format: https://openapi.programming-hero.com/api/news/{news_id}
+
+Example: https://openapi.programming-hero.com/api/news/0282e0e58a5c404fbd15261f11c2ab6a
+
+
+
+/* const setAllMenu = allNews => {
+    // console.log(allNews);
+    const allMenu = document.getElementById('all-menu');
+    allNews.forEach(news => {
+        const div = document.createElement('div');
+        div.innerHTML = `
+            <li class="nav-item mx-4">
+                <a class="nav-link" href="#home">${news.category_name}</a>
+            </li>
+        `;
+        allMenu.appendChild(div);
+    });
+}
+
+loadAllNews(); */
