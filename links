@@ -28,3 +28,13 @@ Example: https://openapi.programming-hero.com/api/news/0282e0e58a5c404fbd15261f1
 }
 
 loadAllNews(); */
+
+
+async function exe() {
+ try {
+  const result = await request(); // Now this will wait till it finished
+  console.log(result);
+ } catch(e) {
+  console.log(e);
+ }
+}

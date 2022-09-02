@@ -13,6 +13,7 @@ const setAllMenu = async () => {
     const allMenu = document.getElementById('all-menu');
     for (const news of data) {
         // console.log(news.category_name);
+        getNewsCategoryDetails(news.category_id, news.category_name);
         const div = document.createElement('div');
         div.innerHTML = `
             <li class="nav-item mx-4">
@@ -21,6 +22,15 @@ const setAllMenu = async () => {
         `;
         allMenu.appendChild(div);
     }
+    processSearch(false);
+}
+
+// loader 
+const processSearch = () => {
+    toggleSpinner(true);
+    const clickedNews = document.getElementById('search-field')
+    const newsClicked = clickedNews.value;
+    setAllMenu(newsClicked);
 }
 
 const getNewsCategoryDetails = async (category_id, category_name) => {
@@ -36,7 +46,11 @@ const getNewsCategoryDetails = async (category_id, category_name) => {
 const displayAllNews = categoryNews => {
     const newsContainer = document.getElementById('news-container');
     newsContainer.textContent = '';
-    document.getElementById('count-item').innerText = categoryNews.length;
+    if (categoryNews.length !== 0) {
+        document.getElementById('count-item').innerText = categoryNews.length;
+    } else {
+        document.getElementById('count-item').innerText = 'No';
+    }
 
 
     for (const news of categoryNews) {
@@ -58,13 +72,13 @@ const displayAllNews = categoryNews => {
                 <div class="d-flex align-items-center justify-content-around">
                     <div class="d-flex align-items-center">
                         <img class="image-round" src="${news.author.img}" alt="">
-                        <h6>${news.author.name ? news.author.name : 'No Author Name'}</h6>
+                        <h6>${news.author.name ? news.author.name : 'No Data Found'}</h6>
                     </div>
                     <div>
-                        <h3>${news.total_view}</h3>
+                        <h3>${news.total_view ? news.total_view : 'No Data Found'}</h3>
                     </div>
                     <div>
-                        <button onclick="loadNewsDetails(${news._id})" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">show Details</button>
+                        <button onclick="loadNewsDetails('${news._id}')" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#newsModal">show Details</button>
                     </div>
                 </div>
             </div>
@@ -74,12 +88,35 @@ const displayAllNews = categoryNews => {
         newsContainer.appendChild(cardDiv);
 
     }
+
 }
 const loadNewsDetails = async _id => {
+    console.log(_id);
     const url = `https://openapi.programming-hero.com/api/news/${_id}`
     const res = await fetch(url);
     const data = await res.json();
-    console.log(data);
+    const detailsNews = data.data;
+    displayNewsDetails(detailsNews);
+    // console.log(data.data);
+}
+
+const displayNewsDetails = newsDetails => {
+    console.log(newsDetails);
+    const newsModalLabel = document.getElementById('newsModalLabel');
+    newsModalLabel.innerText = newsDetails[0].title;
+    const modalBody = document.getElementById('details-news');
+    modalBody.innerHTML = `
+    <img class="w-100" src="${newsDetails[0].image_url}">
+    <p> ${newsDetails[0].details} </p>
+    <div class="d-flex align-items-center justify-content-around">
+        <img class="image-round" src="${newsDetails[0].author.img}" alt="">
+        <h6>${newsDetails[0].author.name ? newsDetails[0].author.name : 'No Data Found'}</h6>
+        <p>${newsDetails[0].author.published_date}</p>
+    </div>
+    `;
+
+    // document.getElementById('details-news').innerText = newsDetails[0].details;
+
 }
 
 setAllMenu()
