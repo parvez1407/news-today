@@ -72,6 +72,7 @@ const displayAllNews = categoryNews => {
         document.getElementById('count-item').innerText = 'No';
     }
 
+    // sorting most viewed news
     categoryNews.sort((a, b) => (b.total_view > a.total_view) ? 1 : ((a.total_view > b.total_view) ? -1 : 0));
 
     categoryNews.forEach(news => {
@@ -93,10 +94,13 @@ const displayAllNews = categoryNews => {
                 <div class="d-flex align-items-center justify-content-between mt-5">
                     <div class="d-flex align-items-center">
                         <img class="image-round" src="${news.author.img}" alt="">
-                        <h6>${news.author.name ? news.author.name : 'No Data Found'}</h6>
+                        <div class="ms-3">
+                            <h6 class="fs-5">${news.author.name ? news.author.name : ' No Data Found'}</h6>
+                            <h6 class="fs-6 text-muted">${news.author.published_date ? news.author.published_date : ' No Data Found'}</h6>
+                        </div>
                     </div>
                     <div>
-                        <h3><i class="fa-regular fa-eye"></i> ${news.total_view ? news.total_view : 'No Data Found'}</h3>
+                        <h3 class="fs-5"><i class="fa-regular fa-eye"></i> ${news.total_view ? news.total_view : 'No Data Found'}</h3>
                     </div>
                     <div>
                         <button onclick="loadNewsDetails('${news._id}')" class="border-0 text-primary fw-bold fs-2" data-bs-toggle="modal" data-bs-target="#newsModal"><i class="fa-solid fa-arrow-right"></i></button>
