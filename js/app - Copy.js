@@ -59,7 +59,7 @@ const displayAllNews = categoryNews => {
     }
 
 
-    categoryNews.forEach(news => {
+    for (const news of categoryNews) {
         console.log(news);
         const cardDiv = document.createElement('div');
         // cardDiv.classList.add('row');
@@ -92,7 +92,8 @@ const displayAllNews = categoryNews => {
         </div>
         `;
         newsContainer.appendChild(cardDiv);
-    });
+
+    }
 
 }
 const loadNewsDetails = async _id => {
