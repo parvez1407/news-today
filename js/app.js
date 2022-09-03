@@ -16,7 +16,7 @@ const setAllMenu = async () => {
         getNewsCategoryDetails(news.category_id, news.category_name);
         const div = document.createElement('div');
         div.innerHTML = `
-            <li class="nav-item mx-4">
+            <li class="nav-item mx-4 fw-bold menu-hover">
                 <a onclick="getNewsCategoryDetails('${news.category_id}', '${news.category_name}')" class="nav-link" href="#home">${news.category_name}</a>
             </li>
         `;
@@ -58,7 +58,7 @@ const displayAllNews = categoryNews => {
         const cardDiv = document.createElement('div');
         // cardDiv.classList.add('row');
         cardDiv.innerHTML = `
-        <div  class="card mb-3">
+        <div  class="card mb-4 p-4">
         <div class="row g-0">
             <div class="col-md-4">
                 <img src="${news.thumbnail_url}" class="img-fluid rounded-start" alt="...">
@@ -69,7 +69,7 @@ const displayAllNews = categoryNews => {
                     <p class="card-text">${news.details.length > 400 ? news.details.substring(0, 399) + '...' : news.details}</p>
 
                 </div>
-                <div class="d-flex align-items-center justify-content-around">
+                <div class="d-flex align-items-center justify-content-between mt-5">
                     <div class="d-flex align-items-center">
                         <img class="image-round" src="${news.author.img}" alt="">
                         <h6>${news.author.name ? news.author.name : 'No Data Found'}</h6>
@@ -78,7 +78,7 @@ const displayAllNews = categoryNews => {
                         <h3>${news.total_view ? news.total_view : 'No Data Found'}</h3>
                     </div>
                     <div>
-                        <button onclick="loadNewsDetails('${news._id}')" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#newsModal">show Details</button>
+                        <button onclick="loadNewsDetails('${news._id}')" class="border-0 text-primary fw-bold fs-2" data-bs-toggle="modal" data-bs-target="#newsModal"><i class="fa-solid fa-arrow-right"></i></button>
                     </div>
                 </div>
             </div>

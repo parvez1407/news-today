@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blogs</title>
+    <!-- bootstrap css cdn -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+</head>
+
+<body class="container">
+    <section class="text-center text-primary">
+        <h1>Welcome To My Blog</h1>
+    </section>
+    <section class="mt-5">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Difference Between var let and const</h5>
+                        <p class="card-text"><span class="fw-bold">var keyword in JavaScript:</span> The var is the
+                            oldest keyword to
+                            declare a
+                            variable in JavaScript.
+
+                            Scope: Global scoped or function scoped. The scope of the var keyword is the global or
+                            function scope. It means variables defined outside the function can be accessed globally,
+                            and variables defined inside a particular function can be accessed within the function.
+                            Variable is declared globally. So, the scope of the variable is global, and it can be
+                            accessible everywhere in the program
+                            <br>
+                            <span class="fw-bold">let keyword in JavaScript:</span> The let keyword is an improved
+                            version of the var keyword & user can update it value.
+
+                            Scope: block scoped: The scope of a let variable is only block scoped. It cant be
+                            accessible outside the particular block ({block}).
+                            <br>
+                            <span class="fw-bold">const keyword in JavaScript:</span> The const keyword has all the
+                            properties that are the same as
+                            the let keyword, except the user cannot update it.
+
+                            Scope: block scoped: When users declare a const variable, they need to initialize it,
+                            otherwise, it returns an error. The user cannot update the const variable once it is
+                            declared.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a short card.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
