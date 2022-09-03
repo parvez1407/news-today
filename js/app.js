@@ -7,8 +7,6 @@ const loadAllNews = async () => {
     } catch (error) {
         alert(error);
     }
-
-
     // console.log(data.data.news_category);
 }
 
@@ -63,7 +61,7 @@ const toggleSpinner = isClick => {
 
 
 const displayAllNews = categoryNews => {
-    console.log(categoryNews);
+    // console.log(categoryNews);
     const newsContainer = document.getElementById('news-container');
     newsContainer.textContent = '';
     if (categoryNews.length !== 0) {
@@ -76,7 +74,7 @@ const displayAllNews = categoryNews => {
     categoryNews.sort((a, b) => (b.total_view > a.total_view) ? 1 : ((a.total_view > b.total_view) ? -1 : 0));
 
     categoryNews.forEach(news => {
-        console.log(news);
+        // console.log(news);
         const cardDiv = document.createElement('div');
         // cardDiv.classList.add('row');
         cardDiv.innerHTML = `
@@ -116,9 +114,11 @@ const displayAllNews = categoryNews => {
     // loader stopped
     toggleSpinner(false);
 }
+
+// Details of news portal
 const loadNewsDetails = async _id => {
+    // console.log(_id);
     try {
-        console.log(_id);
         const url = `https://openapi.programming-hero.com/api/news/${_id}`
         const res = await fetch(url);
         const data = await res.json();
@@ -132,7 +132,7 @@ const loadNewsDetails = async _id => {
 }
 
 const displayNewsDetails = newsDetails => {
-    console.log(newsDetails);
+    // console.log(newsDetails);
     const newsModalLabel = document.getElementById('newsModalLabel');
     newsModalLabel.innerText = newsDetails[0].title;
     const modalBody = document.getElementById('details-news');
@@ -146,10 +146,6 @@ const displayNewsDetails = newsDetails => {
     </div>
     `;
 
-    // document.getElementById('details-news').innerText = newsDetails[0].details;
-
 }
 
-setAllMenu()
-
-// loadAllNews();
+setAllMenu();
